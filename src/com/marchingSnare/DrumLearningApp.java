@@ -19,7 +19,11 @@ public class DrumLearningApp extends Application {
         Button startLearningButton = new Button("Start Learning");
         Button practiceButton = new Button("Practice");
         Button progressButton = new Button("My Progress");
-
+        
+        startLearningButton.setOnAction(event -> {
+        	System.out.println("Start Learning Button was clicked!");
+        }) ;
+        
         VBox layout = new VBox(
             20,
             title,
