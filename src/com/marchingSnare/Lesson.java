@@ -6,10 +6,10 @@ public class Lesson {
 	private String difficulty;
 	private int bpm;
 	
-	public Lesson(String name, String description, String difficulty, int BPM) { // specifying constructor
+	public Lesson(String name, String description, String difficulty, int bpm) { // specifying constructor
 		this.name = name;
-		description = description;
-		difficulty = difficulty;
+		this.description = description;
+		this.difficulty = difficulty;
 		this.bpm = bpm;
 	}
 	
