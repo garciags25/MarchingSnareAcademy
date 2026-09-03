@@ -9,16 +9,30 @@ public class LessonSelection {
 	private ScrollPane scrollPane;
 	
 	public LessonSelection(LessonManager manager) {
-		this.manager = manager;
-		
-		Label test = new Label("testing");
+		this.manager = manager;	
 		
 		layout = new VBox (
-				20,
-				test);
+				20);
+		
+		for (int i = 0; i < manager.getLessons().size(); i++) {
+			Label name = new Label(manager.getLessons().get(i).getName());
+			Label difficulty = new Label(manager.getLessons().get(i).getDifficulty());
+			Label bpm = new Label("" + manager.getLessons().get(i).getBpm());
+			Label description = new Label(manager.getLessons().get(i).getDescription());
+			
+			VBox card = new VBox(
+					name,
+					difficulty,
+					bpm,
+					description);
+			
+			layout.getChildren().add(card);
+		}
+		
 		scrollPane = new ScrollPane();
 		
 		scrollPane.setContent(layout);
+			
 	}
 	
 	public ScrollPane getScrollPane() {
