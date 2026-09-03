@@ -4,12 +4,15 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 public class MainMenu {
-		LessonManager manager = new LessonManager();
 		private VBox layout;
-		
-	public MainMenu() {
+		private EventHandler<ActionEvent> startLearningHandler;
+	
+	public MainMenu(EventHandler<ActionEvent> event) {
+		startLearningHandler = event;
 		Label title = new Label("Marching Snare Academy");
         Label subtitle = new Label("Learn. Practice. Improve.");
 
@@ -17,9 +20,7 @@ public class MainMenu {
         Button practiceButton = new Button("Practice");
         Button progressButton = new Button("My Progress");
         
-        startLearningButton.setOnAction(event -> {
-        	System.out.println("Start Learning Button was clicked!");
-        }) ;
+        startLearningButton.setOnAction(startLearningHandler);
         
         layout = new VBox(
             20,
