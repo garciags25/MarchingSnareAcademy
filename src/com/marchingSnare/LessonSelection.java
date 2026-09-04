@@ -9,9 +9,10 @@ import javafx.scene.layout.CornerRadii;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 
 public class LessonSelection {
-	LessonManager manager;
+	private LessonManager manager;
 	private VBox layout;	// container for all lesson cards
 	private ScrollPane scrollPane;	// holds layout
 	
@@ -29,12 +30,30 @@ public class LessonSelection {
 				20);
 		
 		for (int i = 0; i < manager.getLessons().size(); i++) {
-			Label name = new Label(manager.getLessons().get(i).getName());
-			Label difficulty = new Label(manager.getLessons().get(i).getDifficulty());
-			Label bpm = new Label("" + manager.getLessons().get(i).getBpm());
-			Label description = new Label(manager.getLessons().get(i).getDescription());
+			Lesson currLesson = manager.getLessons().get(i); // temporarily stores current lesson in iteration
+			
+			Label name = new Label(currLesson.getName());
+			Label difficulty = new Label(currLesson.getDifficulty());
+			Label bpm = new Label("" + currLesson.getBpm());
+			Label description = new Label(currLesson.getDescription());
+			
 			
 			Button startLesson = new Button("Start Lesson");
+			startLesson.setOnAction(event -> {
+				System.out.println("" + name.getText());
+			});
+			
+			CheckBox checkbox = new CheckBox("Complete");
+			
+			checkbox.setOnAction(event -> {
+				if (checkbox.isSelected()) {
+					currLesson.setComplete(true);
+					System.out.println(currLesson.getComplete());
+				} else {
+					currLesson.setComplete(false);
+					System.out.println(currLesson.getComplete());
+				}
+			});
 			
 			VBox card = new VBox(	// displays information on each lesson card
 					20,		// spacing between child nodes
@@ -42,6 +61,7 @@ public class LessonSelection {
 					difficulty,
 					bpm,
 					description,
+					checkbox,
 					startLesson);
 			
 			layout.getChildren().add(card);		// adds unique lesson information each iteration
