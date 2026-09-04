@@ -5,6 +5,7 @@ import javafx.scene.layout.VBox;
 
 public class LessonScreen {
 	private Lesson lesson;
+	private VBox layout;
 	
 	public LessonScreen(Lesson lesson) {
 		this.lesson = lesson;
@@ -14,11 +15,15 @@ public class LessonScreen {
 		Label bpm = new Label("" + lesson.getBpm());
 		Label description = new Label(lesson.getDescription());
 		
-		VBox layout = new VBox(
+		layout = new VBox(
 				20,
 				name,
 				difficulty,
 				bpm,
 				description );
+	}
+	
+	public VBox getLayout() {
+		return layout;
 	}
 }

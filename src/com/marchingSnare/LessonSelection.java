@@ -15,9 +15,11 @@ public class LessonSelection {
 	private LessonManager manager;
 	private VBox layout;	// container for all lesson cards
 	private ScrollPane scrollPane;	// holds layout
+	private LessonSelectionHandler handler;
 	
-	public LessonSelection(LessonManager manager) {
+	public LessonSelection(LessonManager manager, LessonSelectionHandler handler) {
 		this.manager = manager;	
+		this.handler = handler;
 		
 		// styling each lesson card
 		Color fillColor = Color.ALICEBLUE; // creates background color
@@ -40,7 +42,7 @@ public class LessonSelection {
 			
 			Button startLesson = new Button("Start Lesson");
 			startLesson.setOnAction(event -> {
-				System.out.println("" + name.getText());
+				handler.handler(currLesson);
 			});
 			
 			CheckBox checkbox = new CheckBox("Complete");
