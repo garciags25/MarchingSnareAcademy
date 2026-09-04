@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.layout.CornerRadii;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 
 public class LessonSelection {
 	LessonManager manager;
@@ -33,12 +34,15 @@ public class LessonSelection {
 			Label bpm = new Label("" + manager.getLessons().get(i).getBpm());
 			Label description = new Label(manager.getLessons().get(i).getDescription());
 			
+			Button startLesson = new Button("Start Lesson");
+			
 			VBox card = new VBox(	// displays information on each lesson card
 					20,		// spacing between child nodes
 					name,
 					difficulty,
 					bpm,
-					description);
+					description,
+					startLesson);
 			
 			layout.getChildren().add(card);		// adds unique lesson information each iteration
 			card.setBackground(background);		// sets background color and corner radius
