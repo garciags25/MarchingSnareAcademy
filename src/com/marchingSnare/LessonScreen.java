@@ -8,16 +8,15 @@ import javafx.animation.Timeline;
 import javafx.animation.KeyFrame;
 import javafx.util.Duration;
 import javafx.scene.media.AudioClip;
-import java.lang.ClassLoader;
 import java.net.URL;
 
 public class LessonScreen {
 	private Lesson lesson;
 	private VBox layout;
 	private Timeline timeline = new Timeline();
-	int beat = 0;
+	private int beat = 0;
 	
-	public LessonScreen(Lesson lesson) {
+	public LessonScreen(Lesson lesson, BackHandler backHandler) {
 		this.lesson = lesson;
 		
 		Label name = new Label(lesson.getName());
@@ -26,6 +25,7 @@ public class LessonScreen {
 		Label description = new Label(lesson.getDescription());
 		
 		Button startPractice = new Button("Start Practice");
+		Button backButton = new Button("Go Back");
 		
 		// using Timeline, KeyFrame, URL, and AudioClip to create metronome
 		URL normalClickUrl = getClass().getResource("/sounds/NormalClick.wav");
@@ -52,9 +52,10 @@ public class LessonScreen {
 		});
 		
 		timeline.getKeyFrames().add(keyframe);
-		timeline.setCycleCount(8);
+		timeline.setCycleCount(10);
 		
-		startPractice.setOnAction(event -> { timeline.play(); normalClick.play();});
+		startPractice.setOnAction(event -> { timeline.play(); });
+		backButton.setOnAction(event -> { backHandler.backHandler(); });
 		
 		layout = new VBox(
 				20,
@@ -62,7 +63,8 @@ public class LessonScreen {
 				difficulty,
 				bpm,
 				description,
-				startPractice);
+				startPractice,
+				backButton);
 		
 		layout.setAlignment(Pos.TOP_CENTER);
 		

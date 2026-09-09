@@ -17,7 +17,7 @@ public class LessonSelection {
 	private ScrollPane scrollPane;	// holds layout
 	private LessonSelectionHandler handler;
 	
-	public LessonSelection(LessonManager manager, LessonSelectionHandler handler) {
+	public LessonSelection(LessonManager manager, LessonSelectionHandler handler, BackHandler backHandler) {
 		this.manager = manager;	
 		this.handler = handler;
 		
@@ -72,6 +72,10 @@ public class LessonSelection {
 			card.setMaxWidth(675.0);
 		}
 		
+		Button backButton = new Button("Go Back");
+		backButton.setOnAction(event -> { backHandler.backHandler(); });
+		
+		layout.getChildren().add(0, backButton);
 		layout.setAlignment(Pos.TOP_CENTER);
 		scrollPane = new ScrollPane();
 		scrollPane.setFitToWidth(true);
