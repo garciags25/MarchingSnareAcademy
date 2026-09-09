@@ -1,5 +1,6 @@
 package com.marchingSnare;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
@@ -75,8 +76,14 @@ public class LessonSelection {
 		Button backButton = new Button("Go Back");
 		backButton.setOnAction(event -> { backHandler.backHandler(); });
 		
-		layout.getChildren().add(0, backButton);
+		HBox leftWrapper = new HBox(backButton);
+		leftWrapper.setAlignment(Pos.TOP_LEFT);
+		
+		layout.getChildren().add(0, leftWrapper);
 		layout.setAlignment(Pos.TOP_CENTER);
+		layout.setPadding(new Insets(10));
+		
+		
 		scrollPane = new ScrollPane();
 		scrollPane.setFitToWidth(true);
 		scrollPane.setContent(layout);

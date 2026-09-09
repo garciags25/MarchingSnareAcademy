@@ -54,8 +54,8 @@ public class LessonScreen {
 		timeline.getKeyFrames().add(keyframe);
 		timeline.setCycleCount(10);
 		
+		backButton.setOnAction(event -> { backHandler.backHandler(); timeline.stop(); });
 		startPractice.setOnAction(event -> { timeline.play(); });
-		backButton.setOnAction(event -> { backHandler.backHandler(); });
 		
 		layout = new VBox(
 				20,
@@ -67,7 +67,6 @@ public class LessonScreen {
 				backButton);
 		
 		layout.setAlignment(Pos.TOP_CENTER);
-		
 	}
 	
 	public VBox getLayout() {
