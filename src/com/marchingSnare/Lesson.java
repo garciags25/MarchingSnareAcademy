@@ -2,12 +2,13 @@ package com.marchingSnare;
 
 public class Lesson {
 	private String name;
-	private String description;
 	private String difficulty;
+	private String description;
+	private String howToPlay;
 	private int bpm;
 	private boolean complete;
 	
-	public Lesson(String name, String description, String difficulty, int bpm) { // specifying constructor
+	public Lesson(String name, String description, String difficulty, int bpm, String howToPlay) { // specifying constructor
 		this.name = name;
 		this.description = description;
 		this.difficulty = difficulty;
@@ -19,12 +20,16 @@ public class Lesson {
 		return name;
 	}
 	
+	public String getDifficulty() {
+		return difficulty;
+	}
+	
 	public String getDescription() {
 		return description;
 	}
 	
-	public String getDifficulty() {
-		return difficulty;
+	public String getHowToPlay() {
+		return howToPlay;
 	}
 	
 	public int getBpm() {
