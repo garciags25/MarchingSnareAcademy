@@ -12,7 +12,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 
-public class LessonSelection {
+public class LessonSelection {	// lessonSelection displays all lesson cards in a scrollPane for lesson selection
 	private LessonManager manager;
 	private VBox layout;	// container for all lesson cards
 	private ScrollPane scrollPane;	// holds layout
@@ -47,6 +47,7 @@ public class LessonSelection {
 			});
 			
 			CheckBox checkbox = new CheckBox("Complete");
+			checkbox.setSelected(currLesson.getComplete());
 			
 			checkbox.setOnAction(event -> {
 				if (checkbox.isSelected()) {

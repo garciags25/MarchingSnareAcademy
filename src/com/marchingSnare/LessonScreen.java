@@ -10,7 +10,7 @@ import javafx.util.Duration;
 import javafx.scene.media.AudioClip;
 import java.net.URL;
 
-public class LessonScreen {
+public class LessonScreen {	// Lesson Screen displays lesson information and begin practice functionality
 	private Lesson lesson;
 	private VBox layout;
 	private Timeline timeline = new Timeline();
